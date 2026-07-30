@@ -1,12 +1,32 @@
-name: Hello World
+name: My First GitHub Action
 
 on:
   push:
+    branches:
+      - main
+      - master
+
+  pull_request:
+    branches:
+      - main
+      - master
 
 jobs:
-  hello:
+  build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Print Hello World
-        run: echo "Hello, World!"
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Display a Message
+        run: echo "Hello, GitHub Actions!"
+
+      - name: Show Current Directory
+        run: pwd
+
+      - name: List Files
+        run: ls -la
+
+      - name: Show Date
+        run: date
